@@ -20,7 +20,7 @@
 body {
   font-size: 16px;
   color: #6b737b;
-  background-color: #2c323a;
+  background-color: #3b3f42;
 }
 
 ol,
@@ -86,9 +86,12 @@ span {
 
 .sidebar {
   flex: 1 1 25%;
+  border-top: 2px solid #454546;
+  border-right: 2px solid #454546;
 }
 
 .chat-panel {
   flex: 1 1 75%;
-  background: red;
+  background-color: #2b2b2b;
+  border-top: 2px solid #4b5053;
 }

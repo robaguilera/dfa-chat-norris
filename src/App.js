@@ -6,14 +6,21 @@ import axios from "axios";
 import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      archivedMsg: [],
+      newMsg: []
+    };
+  }
   componentDidMount() {
-    let archivedMsg = axios
-      .get("http://localhost:8887/messagesArchived")
-      .then(res => {
-        console.log(res);
-      });
-    let newMsg = axios.get("http://localhost:8887/newMessages").then(res => {
-      console.log(res);
+    axios.get("http://localhost:8887/messagesArchived").then(res => {
+      const archivedMsg = res.data;
+      this.setState({ archivedMsg });
+    });
+    axios.get("http://localhost:8887/newMessages").then(res => {
+      const newMsg = res.data;
+      this.setState({ newMsg });
     });
   }
   render() {
@@ -22,7 +29,7 @@ class App extends Component {
         <Header />
         <div className="app-content">
           <SideBar />
-          <ChatPanel />
+          <ChatPanel archivedMsgs={this.state.archivedMsg} />
         </div>
       </div>
     );

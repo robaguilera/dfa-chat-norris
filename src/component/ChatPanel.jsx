@@ -1,6 +1,6 @@
 import React from "react";
 
-const ChatPanel = () => {
+const ChatPanel = props => {
   return (
     <aside className="chat-panel">
       <div className="room-header">
@@ -11,13 +11,23 @@ const ChatPanel = () => {
         </div>
       </div>
       <div className="chat-room">
-        <div className="chat">
-          <div className="msg-content">
-            <div className="name" />
-            <div className="msg" />
-            <div className="date" />
-          </div>
-        </div>
+        {props.archivedMsgs.map(msg => {
+          return (
+            <div className="chat">
+              <div className="msg-content">
+                <div className="name">
+                  {msg.personName}
+                </div>
+                <div className="msg">
+                  {msg.chatMessage}
+                </div>
+                <div className="date">
+                  {msg.dateCreated}
+                </div>
+              </div>
+            </div>
+          );
+        })}
         <div className="current-population">
           <div className="user-name" />
         </div>
