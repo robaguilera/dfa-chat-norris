@@ -1,18 +1,15 @@
 import React from "react";
+import "../styles/header.css";
 
 const Header = () => {
   return (
     <header>
-      <h2>
-        Chat<img src="./img/chucky.png" alt="Chuck Was Here" />
-      </h2>
-      <div className="nav-menu">
-        <ul>
-          <li>Account</li>
-          <li>Settings</li>
-          <li>Log Out</li>
-        </ul>
-      </div>
+      <h1 className="app-title">Chat Norris</h1>
+      <ul className="nav">
+        <li>Account</li>
+        <li>Settings</li>
+        <li>Log Out</li>
+      </ul>
     </header>
   );
 };

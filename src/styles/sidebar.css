@@ -1,0 +1,9 @@
+.sidebar-header ul {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.sidebar-header li:not(:last-child) {
+  margin-right: 25px;
+}

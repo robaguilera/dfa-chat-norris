@@ -7,16 +7,23 @@ import "./App.css";
 
 class App extends Component {
   componentDidMount() {
-    let res = axios.get("http://localhost:8887/newMessages").then(res => {
+    let archivedMsg = axios
+      .get("http://localhost:8887/messagesArchived")
+      .then(res => {
+        console.log(res);
+      });
+    let newMsg = axios.get("http://localhost:8887/newMessages").then(res => {
       console.log(res);
     });
   }
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header />
-        <SideBar />
-        <ChatPanel />
+        <div className="app-content">
+          <SideBar />
+          <ChatPanel />
+        </div>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from "react";
 
 const ChatPanel = () => {
   return (
-    <aside>
+    <aside className="chat-panel">
       <div className="room-header">
         <div className="chat-room-name">
           <div className="chat-details">
@@ -11,7 +11,7 @@ const ChatPanel = () => {
         </div>
       </div>
       <div className="chat-room">
-        <div className="chat-panel">
+        <div className="chat">
           <div className="msg-content">
             <div className="name" />
             <div className="msg" />

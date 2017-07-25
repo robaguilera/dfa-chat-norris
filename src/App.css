@@ -2,3 +2,93 @@
  * https://dribbble.com/shots/1368935-Chat-room/attachments/196092
  * http://www.co-mail.com/wp-content/uploads/2016/08/zobe-chat-interface.png
 */
+
+/*
+  Resets
+*/
+
+*,
+* + * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 16px;
+  color: #6b737b;
+  background-color: #2c323a;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1 {
+  font-size: 1.602rem;
+}
+
+h2 {
+  font-size: 1.424rem;
+}
+
+h3 {
+  font-size: 1.266rem;
+}
+
+p,
+li,
+a,
+span {
+  font-size: 1rem;
+}
+
+/* helper classes */
+.active {
+  color: #aab3c1;
+}
+
+/* general application styles */
+.nav {
+  display: flex;
+}
+
+.nav li {
+  transition: 200ms ease-in-out;
+}
+
+.nav li:not(:last-child) {
+  margin-right: 25px;
+}
+
+.nav li:hover {
+  color: #aab3c1;
+}
+
+.app-content {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.sidebar {
+  flex: 1 1 25%;
+}
+
+.chat-panel {
+  flex: 1 1 75%;
+  background: red;
+}
