@@ -15,7 +15,6 @@ class App extends Component {
   }
   componentDidMount() {
     let counter = 1;
-    let self = this;
     axios.get("http://localhost:8887/messagesArchived").then(res => {
       const archivedMsg = res.data.map(data => {
         data.id = counter;
@@ -24,14 +23,18 @@ class App extends Component {
       });
       this.setState({ archivedMsg });
     });
-    let randomCall = function randomCall() {
-      return axios.get("http://localhost:8887/newMessages").then(function(res) {
-        const newMsg = res.data;
-        console.log("hi");
-        self.setState({ newMsg });
+    const randomCall = () => {
+      return axios.get("http://localhost:8887/newMessages").then(res => {
+        const incomingMsg = res.data.map(data => {
+          data.id = counter;
+          counter += 1;
+          return data;
+        });
+        const newMsg = this.state.newMsg.concat(incomingMsg);
+        this.setState({ newMsg });
       });
     };
-    setInterval(randomCall, 2000);
+    setInterval(randomCall, 3000);
   }
 
   render() {
