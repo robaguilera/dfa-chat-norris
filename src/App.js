@@ -10,9 +10,12 @@ class App extends Component {
     super(props);
     this.state = {
       archivedMsg: [],
-      newMsg: []
+      newMsg: [],
+      user: ""
     };
+    this.captureUserInput = this.captureUserInput.bind(this);
   }
+
   componentDidMount() {
     let counter = 1;
     axios.get("http://localhost:8887/messagesArchived").then(res => {
@@ -23,6 +26,7 @@ class App extends Component {
       });
       this.setState({ archivedMsg });
     });
+
     const pollServer = () => {
       return axios.get("http://localhost:8887/newMessages").then(res => {
         const incomingMsg = res.data.map(data => {
@@ -36,8 +40,29 @@ class App extends Component {
       });
     };
     setInterval(pollServer, 4500);
+    const user = prompt(
+      "Welcome to Chat Norris, your gateway to celebrities.  What should we call you?"
+    );
+    this.setState({ user });
+    alert(`${user}, thanks for joining!`);
   }
 
+  captureUserInput(evt) {
+    // TODO: date, id
+    const user = {
+      chatMessage: evt.target.value,
+      dateCreated: "July",
+      id: 3,
+      personName: this.state.user
+    };
+    let newMsg = this.state.newMsg.concat(user);
+
+    if (evt.keyCode === 13) {
+      console.log(newMsg);
+      this.setState({ newMsg });
+      newMsg = "";
+    }
+  }
   render() {
     return (
       <div className="app">
@@ -47,6 +72,7 @@ class App extends Component {
           <ChatPanel
             archivedMsgs={this.state.archivedMsg}
             newMsgs={this.state.newMsg}
+            captureUserInput={this.captureUserInput}
           />
         </div>
       </div>

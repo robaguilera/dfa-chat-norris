@@ -1,0 +1,23 @@
+.user-textarea {
+}
+
+textarea {
+  width: 95%;
+  margin: 20px auto 0;
+  padding: 20px 38px 10px;
+  color: #fff;
+  background: #3f4248;
+  display: block;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  letter-spacing: -0.025rem;
+  max-height: 144px;
+  width: 100%;
+  min-height: 20px;
+  margin: 2px 2px 2px 0;
+}

@@ -17,10 +17,22 @@
   vertical-align: baseline;
 }
 
+html {
+  height: 100vh;
+}
+
+body
+#root,
+.app,
+.app-content {
+  height: 100%;
+}
+
 body {
+  font-family: 'Inconsolata', monospace;
   font-size: 16px;
   color: #6b737b;
-  background-color: #3b3f42;
+  background-color: #2f3237;
 }
 
 ol,
@@ -85,12 +97,12 @@ span {
 
 .sidebar {
   flex: 1 1 25%;
+  background: #292b30;
   border-top: 2px solid #454546;
-  border-right: 2px solid #454546;
 }
 
-.chat-panel {
+.chat-wrapper {
   flex: 1 1 75%;
   background-color: #2b2b2b;
-  border-top: 2px solid #4b5053;
+  border: 2px solid #4b5053;
 }
