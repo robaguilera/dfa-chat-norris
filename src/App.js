@@ -14,22 +14,36 @@ class App extends Component {
     };
   }
   componentDidMount() {
+    let counter = 1;
+    let self = this;
     axios.get("http://localhost:8887/messagesArchived").then(res => {
-      const archivedMsg = res.data;
+      const archivedMsg = res.data.map(data => {
+        data.id = counter;
+        counter += 1;
+        return data;
+      });
       this.setState({ archivedMsg });
     });
-    axios.get("http://localhost:8887/newMessages").then(res => {
-      const newMsg = res.data;
-      this.setState({ newMsg });
-    });
+    let randomCall = function randomCall() {
+      return axios.get("http://localhost:8887/newMessages").then(function(res) {
+        const newMsg = res.data;
+        console.log("hi");
+        self.setState({ newMsg });
+      });
+    };
+    setInterval(randomCall, 2000);
   }
+
   render() {
     return (
       <div className="app">
         <Header />
         <div className="app-content">
           <SideBar />
-          <ChatPanel archivedMsgs={this.state.archivedMsg} />
+          <ChatPanel
+            archivedMsgs={this.state.archivedMsg}
+            newMsgs={this.state.newMsg}
+          />
         </div>
       </div>
     );

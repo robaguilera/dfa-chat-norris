@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import "../styles/chatpanel.css";
 
 const ChatPanel = props => {
@@ -14,13 +15,15 @@ const ChatPanel = props => {
       <div className="chat-room">
         {props.archivedMsgs.map(msg => {
           return (
-            <div className="chat-container">
+            <div className="chat-container" key={msg.id}>
               <div className="msg-content">
                 <div className="name">
                   {msg.personName}:
                 </div>
                 <div className="msg">
-                  <p>{msg.chatMessage}</p>
+                  <p>
+                    {msg.chatMessage}
+                  </p>
                 </div>
                 <div className="date">
                   {msg.dateCreated}
