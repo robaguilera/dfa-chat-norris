@@ -23,18 +23,19 @@ class App extends Component {
       });
       this.setState({ archivedMsg });
     });
-    const randomCall = () => {
+    const pollServer = () => {
       return axios.get("http://localhost:8887/newMessages").then(res => {
         const incomingMsg = res.data.map(data => {
           data.id = counter;
           counter += 1;
           return data;
         });
+
         const newMsg = this.state.newMsg.concat(incomingMsg);
         this.setState({ newMsg });
       });
     };
-    setInterval(randomCall, 3000);
+    setInterval(pollServer, 4500);
   }
 
   render() {

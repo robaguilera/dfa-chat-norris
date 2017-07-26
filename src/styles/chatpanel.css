@@ -1,33 +1,35 @@
 .chat-panel {
-	padding: 30px 20px;
+  padding: 30px 20px;
+  max-height: 900px;
+  overflow: scroll;
 }
 
 .chat-container {
-	margin-bottom: 15px;	
-	line-height: 26px;
+  margin-bottom: 15px;
+  line-height: 26px;
 }
 
 .msg-content {
-	display: flex;
+  display: flex;
 }
 
-.msg-content .name{
-	flex: 1 1 15%;
-	margin-right: 30px;
-	color: #C47532;
+.msg-content .name {
+  flex: 1 1 15%;
+  margin-right: 30px;
+  color: #c47532;
 }
 
 .msg-content .msg {
-	flex: 1 1 75%;
-	margin-right: 15px;
-	color: #FFF;
-	font-weight: 300;
+  flex: 1 1 75%;
+  margin-right: 15px;
+  color: #fff;
+  font-weight: 300;
 }
 
 .msg-content .msg p {
-	width: 90%;
+  width: 90%;
 }
 
-.msg-content .date{
-	flex: 1 1 auto;
+.msg-content .date {
+  flex: 1 1 auto;
 }
