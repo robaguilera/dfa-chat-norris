@@ -7,3 +7,19 @@
 .sidebar-header li:not(:last-child) {
   margin-right: 25px;
 }
+
+.chat-pop-total {
+  margin-bottom: 15px;
+}
+
+.chat-pop-total span {
+  color: #c47532;
+}
+
+.sidebar .user-info {
+  padding: 20px 30px;
+}
+
+.sidebar .user-info .name {
+  margin-bottom: 15px;
+}

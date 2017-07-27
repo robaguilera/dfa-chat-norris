@@ -5,7 +5,7 @@ import "../styles/chatpanel.css";
 const ChatPanel = props => {
   return (
     <div className="chat-wrapper">
-      <aside className="chat-panel">
+      <aside className="chat-panel" id="chat">
         <div className="chat-room">
           {props.archivedMsgs.map(msg => {
             return (

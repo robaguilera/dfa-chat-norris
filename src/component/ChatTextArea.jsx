@@ -4,8 +4,9 @@ import "../styles/chatTextArea.css";
 const ChatTextArea = props => {
   return (
     <div className="user-textarea">
-      <textarea
+      <input
         id="user"
+        type="text"
         placeholder="Message"
         onKeyDown={props.captureUserInput}
       />

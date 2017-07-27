@@ -1,10 +1,7 @@
-.user-textarea {
-}
-
-textarea {
+input {
   width: 95%;
-  margin: 20px auto 0;
-  padding: 20px 38px 10px;
+  margin: 20px auto;
+  padding: 10px;
   color: #fff;
   background: #3f4248;
   display: block;

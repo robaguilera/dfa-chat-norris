@@ -3,7 +3,7 @@ import Header from "./component/Header";
 import SideBar from "./component/SideBar";
 import ChatPanel from "./component/ChatPanel";
 import axios from "axios";
-import {getCurrentTime} from "./helpers/helpers";
+import { getCurrentTime } from "./helpers/helpers";
 import "./App.css";
 
 class App extends Component {
@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       archivedMsg: [],
       newMsg: [],
-      user: ""
+      user: "",
+      chatPop: []
     };
     this.counter = 1;
     this.captureUserInput = this.captureUserInput.bind(this);
@@ -20,32 +21,38 @@ class App extends Component {
 
   componentDidMount() {
     axios.get("http://localhost:8887/messagesArchived").then(res => {
+      let chatPop = [];
       const archivedMsg = res.data.map(data => {
+        chatPop.push(data.personName);
         data.id = this.counter;
         this.counter += 1;
         return data;
       });
-      this.setState({ archivedMsg });
+      this.setState({ archivedMsg, chatPop });
     });
 
     const pollServer = () => {
       return axios.get("http://localhost:8887/newMessages").then(res => {
+        let incomingUsers = [];
         const incomingMsg = res.data.map(data => {
+          incomingUsers.push(data.personName);
           data.id = this.counter;
           this.counter += 1;
           return data;
         });
 
         const newMsg = this.state.newMsg.concat(incomingMsg);
-        this.setState({ newMsg });
+        const chatPop = this.state.chatPop.concat(incomingUsers);
+        this.setState({ newMsg, chatPop });
       });
     };
-    setInterval(pollServer, 4500);
+
+    setInterval(pollServer, 5000);
+
     const user = prompt(
       "Welcome to Chat Norris, your gateway to celebrities.  What should we call you?"
     );
     this.setState({ user });
-    alert(`${user}, thanks for joining!`);
   }
 
   captureUserInput(evt) {
@@ -56,11 +63,14 @@ class App extends Component {
       personName: this.state.user
     };
     this.counter += 1;
-    let newMsg = this.state.newMsg.concat(user);
 
-    if (evt.keyCode === 13) {
+    let newMsg = this.state.newMsg.concat(user);
+    let elChat = document.getElementById("chat");
+
+    if (evt.keyCode === 13 && evt.target.value) {
       this.setState({ newMsg });
-      evt.target.value = '';
+      elChat.scrollTop = elChat.scrollHeight;
+      evt.target.value = "";
     }
   }
   render() {
@@ -68,7 +78,7 @@ class App extends Component {
       <div className="app">
         <Header />
         <div className="app-content">
-          <SideBar />
+          <SideBar chatPop={this.state.chatPop} />
           <ChatPanel
             archivedMsgs={this.state.archivedMsg}
             newMsgs={this.state.newMsg}
