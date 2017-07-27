@@ -3,6 +3,7 @@ import Header from "./component/Header";
 import SideBar from "./component/SideBar";
 import ChatPanel from "./component/ChatPanel";
 import axios from "axios";
+import {getCurrentTime} from "./helpers/helpers";
 import "./App.css";
 
 class App extends Component {
@@ -13,15 +14,15 @@ class App extends Component {
       newMsg: [],
       user: ""
     };
+    this.counter = 1;
     this.captureUserInput = this.captureUserInput.bind(this);
   }
 
   componentDidMount() {
-    let counter = 1;
     axios.get("http://localhost:8887/messagesArchived").then(res => {
       const archivedMsg = res.data.map(data => {
-        data.id = counter;
-        counter += 1;
+        data.id = this.counter;
+        this.counter += 1;
         return data;
       });
       this.setState({ archivedMsg });
@@ -30,8 +31,8 @@ class App extends Component {
     const pollServer = () => {
       return axios.get("http://localhost:8887/newMessages").then(res => {
         const incomingMsg = res.data.map(data => {
-          data.id = counter;
-          counter += 1;
+          data.id = this.counter;
+          this.counter += 1;
           return data;
         });
 
@@ -48,19 +49,18 @@ class App extends Component {
   }
 
   captureUserInput(evt) {
-    // TODO: date, id
     const user = {
       chatMessage: evt.target.value,
-      dateCreated: "July",
-      id: 3,
+      dateCreated: getCurrentTime(),
+      id: this.counter,
       personName: this.state.user
     };
+    this.counter += 1;
     let newMsg = this.state.newMsg.concat(user);
 
     if (evt.keyCode === 13) {
-      console.log(newMsg);
       this.setState({ newMsg });
-      newMsg = "";
+      evt.target.value = '';
     }
   }
   render() {

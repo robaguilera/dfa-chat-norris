@@ -1,6 +1,5 @@
 .chat-panel {
   padding: 30px 20px;
-  margin-right: 30px;
   max-height: 950px;
   overflow: scroll;
 }
