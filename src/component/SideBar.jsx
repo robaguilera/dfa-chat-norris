@@ -4,6 +4,11 @@ import { removeDuplicatesBy } from "../helpers/helpers";
 
 const SideBar = props => {
   let userNames = removeDuplicatesBy(x => x.user.name, props.chatPop)
+  let counter = 1;
+  userNames.forEach(x => {
+    x.user.id = counter;
+    counter += 1
+  });
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -17,7 +22,7 @@ const SideBar = props => {
         </div>
         {userNames.map(user => {
           return (
-            <div className="name">
+            <div className="name" key={user.user.id}>
               {user.user.name}
             </div>
           );
