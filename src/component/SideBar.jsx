@@ -1,14 +1,14 @@
 import React from "react";
 import "../styles/sidebar.css";
-import { filterDupes } from "../helpers/helpers";
+import { removeDuplicatesBy } from "../helpers/helpers";
 
 const SideBar = props => {
-  let userNames = filterDupes(props.chatPop);
+  let userNames = removeDuplicatesBy(x => x.user.name, props.chatPop)
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
         <ul className="nav">
-          <li className="active">Chat Room Celebrities</li>
+          <li className="active">Chat Norris</li>
         </ul>
       </div>
       <div className="user-info">
@@ -18,7 +18,7 @@ const SideBar = props => {
         {userNames.map(user => {
           return (
             <div className="name">
-              {user}
+              {user.user.name}
             </div>
           );
         })}

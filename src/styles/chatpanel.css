@@ -1,7 +1,10 @@
+.chat-wrapper {
+}
 .chat-panel {
   padding: 30px 20px;
-  max-height: 950px;
+  height: 87%;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .chat-container {

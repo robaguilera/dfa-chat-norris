@@ -45,9 +45,6 @@ const ChatPanel = props => {
               </div>
             );
           })}
-          <div className="current-population">
-            <div className="user-name" />
-          </div>
         </div>
       </aside>
       <ChatTextArea captureUserInput={props.captureUserInput} />

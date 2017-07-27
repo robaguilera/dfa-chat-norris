@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Header from "./component/Header";
 import SideBar from "./component/SideBar";
 import ChatPanel from "./component/ChatPanel";
 import axios from "axios";
@@ -23,7 +22,7 @@ class App extends Component {
     axios.get("http://localhost:8887/messagesArchived").then(res => {
       let chatPop = [];
       const archivedMsg = res.data.map(data => {
-        chatPop.push(data.personName);
+        chatPop.push({user: { name: data.personName}});
         data.id = this.counter;
         this.counter += 1;
         return data;
@@ -35,7 +34,7 @@ class App extends Component {
       return axios.get("http://localhost:8887/newMessages").then(res => {
         let incomingUsers = [];
         const incomingMsg = res.data.map(data => {
-          incomingUsers.push(data.personName);
+          incomingUsers.push({user: { name: data.personName}});
           data.id = this.counter;
           this.counter += 1;
           return data;
@@ -76,7 +75,6 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header />
         <div className="app-content">
           <SideBar chatPop={this.state.chatPop} />
           <ChatPanel

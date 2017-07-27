@@ -28,6 +28,10 @@ body
   height: 100%;
 }
 
+/*
+  Begin App styles
+*/
+
 body {
   font-family: 'Inconsolata', monospace;
   font-size: 16px;
@@ -93,6 +97,11 @@ span {
 .app-content {
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .sidebar {
