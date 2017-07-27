@@ -5,7 +5,8 @@ export const getCurrentTime = () => new Date().toString();
 export const removeDuplicatesBy = (keyFn, array) => {
   var mySet = new Set();
   return array.filter(function(x) {
-    var key = keyFn(x), isNew = !mySet.has(key);
+		var key = keyFn(x)
+		var isNew = !mySet.has(key);
     if (isNew) mySet.add(key);
     return isNew;
   });
