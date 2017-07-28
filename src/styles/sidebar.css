@@ -1,25 +1,50 @@
-.sidebar-header ul {
-  display: flex;
-  padding: 10px 0;
-  justify-content: center;
+.sidebar {
+  overflow: scroll;
 }
 
-.sidebar-header li:not(:last-child) {
-  margin-right: 25px;
+.sidebar-header {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+  position: fixed;
+  background-color: #2f3237;
+  text-align: center;
+  top: 0;
+  left: 0;
+}
+
+.sidebar-header .active {
+  margin-bottom: 15px;
 }
 
 .chat-pop-total {
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .chat-pop-total span {
   color: #c47532;
 }
 
-.sidebar .user-info {
-  padding: 20px 30px;
+.user-row {
+  margin-top: 104px;
 }
 
-.sidebar .user-info .name {
-  margin-bottom: 15px;
+.user-details {
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+}
+
+.user-details img {
+  min-width: 90px;
+  max-width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.user-details .name {
+  margin-left: 15px;
 }
